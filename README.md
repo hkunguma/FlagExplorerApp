@@ -12,6 +12,9 @@ install .NET 8 (https://dotnet.microsoft.com/en-us/download)
 - Open bash, cmd, windows powershell
 - cd [to your source folder]
 - Run git clone https://github.com/hkunguma/FlagExplorerApp.git
+- Angular UI files: to initialize submodules when cloning the repository
+  - Run: git submodule update --init --recursive
+
 - Open the solution using Visual Studio
 
 ![alt text](readme-assets/image.png)
