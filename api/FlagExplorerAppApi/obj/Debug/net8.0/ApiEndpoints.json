@@ -1,0 +1,28 @@
+[
+  {
+    "ContainingType": "FlagExplorerAppApi.Controllers.CountryController",
+    "Method": "Get",
+    "RelativePath": "countries",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FlagExplorerAppApi.Controllers.CountryController",
+    "Method": "GetCountryByName",
+    "RelativePath": "countries/{name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

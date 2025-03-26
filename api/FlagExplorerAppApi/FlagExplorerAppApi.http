@@ -1,0 +1,6 @@
+@FlagExplorerAppApi_HostAddress = http://localhost:5210
+
+GET {{FlagExplorerAppApi_HostAddress}}/country/
+Accept: application/json
+
+###

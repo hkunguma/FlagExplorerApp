@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlagExplorerAppApi", "api\FlagExplorerAppApi\FlagExplorerAppApi.csproj", "{96D128ED-ACC2-4EF7-A194-655CAD02445B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlagExplorerApp.Application", "api\FlagExplorerApp.Application\FlagExplorerApp.Application.csproj", "{950B085B-B71F-412D-9828-0D34BE6874BB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BF39A472-75CF-414A-A17F-EA6675C97469} = {BF39A472-75CF-414A-A17F-EA6675C97469}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlagExplorerApp.Infrastructure", "api\FlagExplorerApp.Infrastructure\FlagExplorerApp.Infrastructure.csproj", "{1BF21F38-37BD-47C2-9B1C-7A054480592B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlagExplorerApp.Common", "api\FlagExplorerApp.Common\FlagExplorerApp.Common.csproj", "{BF39A472-75CF-414A-A17F-EA6675C97469}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2908CB15-2118-4760-9D01-2711BE35C390}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FB7A4E27-C6D2-4630-BE7E-D70FAE9ED54B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "tests\UnitTests\UnitTests.csproj", "{D318630F-D171-4C69-9A75-272519BB4C40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "tests\IntegrationTests\IntegrationTests.csproj", "{A7772093-3228-4497-8117-193A40A42E30}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96D128ED-ACC2-4EF7-A194-655CAD02445B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96D128ED-ACC2-4EF7-A194-655CAD02445B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96D128ED-ACC2-4EF7-A194-655CAD02445B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96D128ED-ACC2-4EF7-A194-655CAD02445B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{950B085B-B71F-412D-9828-0D34BE6874BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{950B085B-B71F-412D-9828-0D34BE6874BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{950B085B-B71F-412D-9828-0D34BE6874BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{950B085B-B71F-412D-9828-0D34BE6874BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BF21F38-37BD-47C2-9B1C-7A054480592B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BF21F38-37BD-47C2-9B1C-7A054480592B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BF21F38-37BD-47C2-9B1C-7A054480592B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BF21F38-37BD-47C2-9B1C-7A054480592B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF39A472-75CF-414A-A17F-EA6675C97469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF39A472-75CF-414A-A17F-EA6675C97469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF39A472-75CF-414A-A17F-EA6675C97469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF39A472-75CF-414A-A17F-EA6675C97469}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D318630F-D171-4C69-9A75-272519BB4C40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D318630F-D171-4C69-9A75-272519BB4C40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D318630F-D171-4C69-9A75-272519BB4C40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D318630F-D171-4C69-9A75-272519BB4C40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7772093-3228-4497-8117-193A40A42E30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7772093-3228-4497-8117-193A40A42E30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7772093-3228-4497-8117-193A40A42E30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7772093-3228-4497-8117-193A40A42E30}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D318630F-D171-4C69-9A75-272519BB4C40} = {FB7A4E27-C6D2-4630-BE7E-D70FAE9ED54B}
+		{A7772093-3228-4497-8117-193A40A42E30} = {FB7A4E27-C6D2-4630-BE7E-D70FAE9ED54B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {499BCEB4-E6DB-436B-A903-D5A4C50C9F2B}
+	EndGlobalSection
+EndGlobal

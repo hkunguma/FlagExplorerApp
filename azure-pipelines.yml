@@ -1,0 +1,121 @@
+trigger: 
+- main
+
+pool: 
+  vmImage: 'ubuntu-latest'
+
+variables: 
+  #solution: '**/*.sln'
+  #buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  angularProjectPath: 'FlagExplorerApp/ui/flag-explorer-webapp'
+  apiProjectPath: 'FlagExplorerApp/api/FlagExplorerAppApi'
+
+stages:
+  - stage: TestAndBuild
+    displayName: "Test and Build"
+    jobs:
+      - job: TestAndBuildWebAPI
+        displayName: "Test and Build Web API"
+        steps:
+          # Restore dependencies
+          - task: UseDotNet@2 
+            inputs:
+              packageType: 'sdk'
+              version: '8.x' # .NET
+          - script: |
+              cd $(apiProjectPath)
+              dotnet restore
+            displayName: "Restore Web API dependencies"
+
+          # Run Unit tests for Web API
+          - script: |
+              cd FlagExplorerApp/tests/UnitTests
+              dotnet test --configuration $(buildConfiguration) --parallel --logger "trx;LogFileName=UnitTestResults.trx"
+            displayName: "Run Web API Tests"
+
+          # Publish Unit test results
+          - task: PublishTestResults@2
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: '**/UnitTests/TestResults/*.xml'
+            displayName: "Publish Unit Test Results"
+
+          # Run Integration tests for Web API
+          - script: |
+              cd FlagExplorerApp/tests/IntegrationTests
+              dotnet test --configuration $(buildConfiguration) --parallel --logger "trx;LogFileName=IntegrationTestResults.trx"
+            displayName: "Run Web API Tests"
+
+          # Publish Integration test results
+          - task: PublishTestResults@2
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: '**/IntegrationTests/TestResults/*.xml'
+            displayName: "Publish Integration Test Results"
+
+          # Build Web API
+          - script: |
+              cd $(apiProjectPath)
+              dotnet publish --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/webapi
+            displayName: "Build and Publish Web API"
+      
+      - job: TestAndBuildAngular
+        displayName: "Test and Build Angular Frontend"
+        steps:
+          # Install Node.js
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '22.x'
+
+          # Install Angular CLI
+          - script: |
+              npm install -g @angular/cli
+            displayName: "Install Angular CLI"
+
+          # Install dependencies
+          - script: |
+              cd $(angularProjectPath)
+              npm install
+            displayName: "Install Angular dependencies"
+
+          # Install Google Chrome
+          - script: |
+              sudo apt-get update
+              sudo apt-get install -y wget
+              wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+              sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+            displayName: 'Install Google Chrome on Linux'
+
+          # Run tests for Angular
+          - script: |
+              cd $(angularProjectPath)
+              ng test --watch=false --browsers=ChromeHeadless
+            displayName: "Run Angular Tests"
+
+          # Build Angular
+          - script: |
+              cd $(angularProjectPath)
+              ng build --configuration production --output-path=$(Build.ArtifactStagingDirectory)/frontend
+            displayName: "Build Angular UI"
+
+  - stage: PackageAndDeploy
+    displayName: "Package API, UI and Deploy"
+    dependsOn: TestAndBuild
+    jobs:
+      - job: PackageArtifacts
+        displayName: "Package Artifacts"
+        steps:
+        # Package Web API and Angular UI into artifacts  
+          - task: PublishPipelineArtifact@1
+            inputs:
+              targetPath: $(Build.ArtifactStagingDirectory)
+              artifact: 'drop'
+              
+            
+
+
+
+          
+            
+          

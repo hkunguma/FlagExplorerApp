@@ -1,0 +1,3 @@
+[submodule "ui/flag-explorer-webapp"]
+	path = ui/flag-explorer-webapp
+	url = https://github.com/hkunguma/flag-explorer-webapp.git
